@@ -1,6 +1,10 @@
 package io.acari.event.source.model;
 
-public interface EventTypes
-
-{
+public interface EventTypes {
+    String POD_MEMBER_CREATED = "POD_MEMBER_CREATED";
+    String POD_MEMBER_DELETED = "POD_MEMBER_DELETED";
+    String PERSONAL_INFO_CAPTURED = "PERSONAL_INFO_CAPTURED";
+    String AVATAR_UPLOADED = "AVATAR_UPLOADED";
+    String INTEREST_CAPTURED = "INTEREST_CAPTURED";
+    String INTEREST_REMOVED = "INTEREST_REMOVED";
 }
