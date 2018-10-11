@@ -1,0 +1,16 @@
+version: "3"
+services:
+  node-install:
+    build:
+      dockerfile: Dockerfile-dev
+      context: ./web-content
+    image: alexsimons/webflux-node-dev:9.2.0
+    volumes:
+      - "./:/app"
+    entrypoint:
+      - /bin/bash
+    command:
+      - "-c"
+      - "cd web-content; npm run build"
+
+#runs the node install

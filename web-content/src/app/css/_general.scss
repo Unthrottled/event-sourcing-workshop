@@ -1,0 +1,107 @@
+.boxed-content {
+  background: rgba(0,0,0,0);
+  border-radius: 1em;
+  z-index: 10000;
+  position: relative;
+  width: 99.984%;
+}
+
+pod-member-component {
+  border-radius: 1em;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+body {
+  font-family: Tahoma, Geneva, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 300;
+  background: url('../images/stripe.png') fixed, linear-gradient(#ba5e57,#364a5f);
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+  display: block;
+  max-width: 1500px;
+  margin: auto;
+  padding: 40px 50px;
+}
+
+.project-file-component-container {
+  padding: 1em;
+  background-color: rgba(121, 175, 173, 0.0);
+}
+
+.list-container{
+  padding: 0.5em;
+  background-color: rgba(202, 255, 248, 0);
+  border-radius: 1em;
+  overflow: auto;
+}
+
+.list-container > div {
+  display: inline-block;
+  width: 525px;
+}
+
+.project-container{
+  padding: 1em;
+  background-color: rgba(33, 48, 68, 0.3);
+  border-radius: 1em;
+  margin-bottom: 1em;
+  border: 0.25em double rgba(20, 20, 20, 0.33);
+}
+
+.pod-member-container {
+  background: url(../images/hex.png), url(../images/hex-right.png), #425668 !important;;
+  background-position: top left, top right !important;
+  background-repeat: repeat-y, repeat-y !important;
+  margin: 1em;
+  border-radius: 0.5em;
+  padding: 1em;
+}
+
+.add-image-container {
+  padding: 1em;
+}
+
+.image-holder {
+  text-align: center;
+}
+
+.image-container {
+  padding: 1em;
+}
+
+.image-button-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.edit-button-container {
+  text-align: center;
+  font-size: 1em;
+}
+
+.image-button-container div {
+  margin-right: 1em;
+}
+
+.removable-interest {
+  display: flex;
+}
+
+
+.interest-removal {
+  float: right;
+}
+
+.add-club-member {
+  font-size: 2em;
+}
+
+.add-club-member:hover {
+  cursor: pointer;
+}

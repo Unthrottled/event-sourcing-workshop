@@ -1,0 +1,15 @@
+version: "3"
+services:
+#  web-service:
+#    build: ./web-service
+#    ports:
+#      - 80:80
+#    image: alexsimons/spring-webflux-web-service:1.0.0
+#    depends_on:
+#      - mongo
+  mongo:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    volumes:
+      - "./dataDump/:/data/db"

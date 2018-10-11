@@ -1,0 +1,27 @@
+<div class="project-file-component-container">
+
+    <div >
+        <label>
+            <span class="fa-stack fa-lg add-club-member" (click)="addNewPodMember()">
+                <i style="color: deepskyblue" class="fas fa-circle fa-stack-2x"></i>
+                <i style="color: white" class="fas fa-plus fa-stack-1x"></i>
+            </span>
+        </label>
+    </div>
+    <div class="welcome-container">
+        <p class="welcome-header">
+            Pod Supreme
+        </p>
+        <p class="nano-container">
+            Welcome to Pod Supreme. This pod cannot seem to get enough of event sourcing!
+            Their collective interests attract talent from all around (except for UI design..cough..cough).
+        </p>
+        <p class="nano-container">
+            Add more pod members, so that Pod Supreme will be number one. Pod Supreme ain't got time to wait for you
+            to save. So any inputs will be captured and available for use ASAP.
+        </p>
+    </div>
+    <loading-indicator [doneLoading]="loading"></loading-indicator>
+    <pod-member-list [podMembers]="podMembers"></pod-member-list>
+
+</div>

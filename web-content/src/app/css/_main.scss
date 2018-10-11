@@ -1,0 +1,90 @@
+@charset "utf-8";
+
+
+$base-font-family: Tahoma, Geneva, sans-serif;
+$base-font-size:   16px;
+$header-font-family: Tahoma, Geneva, sans-serif;
+$link-font-family: Tahoma, Geneva, sans-serif;
+$small-font-size:  $base-font-size * 0.875;
+$base-line-height: 1.5;
+
+$spacing-unit:     30px;
+
+$dark-gold: #be944b;
+$gold: #fabd2f;
+
+$reach-white: #f9f9f9;
+$reach-dark-white: #e6e6e6;
+$reach-light-white: #e4e4e4;
+$reach-light-grey: #afafaf;
+$reach-dark-grey: #3e3e3e;
+$reach-diamond-dark-grey: #595959;
+$reach-diamond-light-grey: #63646c;
+$reach-light-purple: #ada8e2;
+$reach-drop-shadow: #8d85d6;
+$reach-almost-light-purple: #8d85d6;
+$reach-purple: #837bd3;
+$reach-burned-purple: #776dce;
+$reach-dark-purple:#4c3fbe;
+$reach-lighter-red: #e9bebe;
+$reach-light-red: #e0a3a3;
+$reach-red: #dd9a9a;
+$reach-burned-red: #da9090;
+$reach-dark-red: #ce6d6d;
+$reach-red-backdrop: #841313;
+
+$blue-grey: #B4C7DA;
+
+$grey-color:       #828282;
+$grey-color-light: lighten($grey-color, 40%);
+$grey-color-dark:  darken($grey-color, 25%);
+
+$dropShadow: $reach-drop-shadow;
+$icon-color: $grey-color;
+$link-color: $reach-light-purple;
+$header-link-color: $reach-dark-purple;
+$post-link-color: $reach-diamond-light-grey;
+$border-color: $reach-purple;
+$code-background: $reach-light-white;
+$code-base-color: $reach-diamond-dark-grey;
+$header-border: $reach-purple;
+$boxed-content: $reach-diamond-dark-grey;
+$title-color: $reach-white;
+$link-background: $reach-dark-purple;
+$header-link-background: $reach-white;
+$link-hover: $reach-burned-purple;
+$font-color: $reach-light-grey;
+$post-excerpt: $reach-white;
+$post-container: $reach-light-grey;
+$tag-color: $reach-light-purple;
+$tag-background: $reach-dark-purple;
+$meta-color: $reach-white;
+$text-color:       #111;
+$background-color: $reach-dark-grey;
+$post-color:       orange;
+$brand-color:      #2a7ae2;
+$about-line-left: $reach-dark-purple;
+$about-line-up: $reach-dark-purple;
+
+
+// Width of the content area
+$content-width: 1000px;
+
+$on-palm: 600px;
+$on-laptop: 1000px;
+$on-tablet: 800px;
+
+
+
+// Using media queries with like this:
+// @include media-query($on-palm) {
+//     .wrapper {
+//         padding-right: $spacing-unit / 2;
+//         padding-left: $spacing-unit / 2;
+//     }
+// }
+@mixin media-query($device) {
+  @media screen and (max-width: $device) {
+    @content;
+  }
+}

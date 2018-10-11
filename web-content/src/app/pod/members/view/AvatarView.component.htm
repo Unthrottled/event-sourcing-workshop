@@ -1,0 +1,6 @@
+<div class="image-holder">
+    <div class="image-container"
+         *ngIf="imageBinary | async">
+        <img [src]="imageBinary | async" alt="SOME IMAGE"/>
+    </div>
+</div>

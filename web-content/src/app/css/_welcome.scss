@@ -1,0 +1,90 @@
+$welcome-background-color: rgb(63, 66, 73);
+$welcome-highlight-color: rgba(91, 210, 250, 0.75);
+.welcome-header-container {
+  display: inline-flex;
+}
+
+@font-face {
+  font-family: 'proto';
+  src: url('./Protos.otf');
+}
+
+.welcome-header {
+  background-color: rgba(5, 114, 144, 0.28);
+  padding: 0.5em;
+  text-align: center;
+  font-family: 'proto', Consolas, Monaco, 'Andale Mono', monospace;
+  color: ghostwhite;
+  font-size: 3em;
+  border-radius: 0.25em 1em 0.5em 1em;
+  text-shadow: -1px -1px 0 $welcome-highlight-color,
+  1px -1px 0 $welcome-highlight-color,
+  -1px 1px 0 $welcome-highlight-color,
+  1px 1px 0 $welcome-highlight-color;
+}
+
+.welcome-container {
+  padding: 2em;
+  background: $welcome-background-color !important;
+  background-position: top left, top right !important;
+  border-radius: 0.25em 1em 0.5em 1em;
+  background-repeat: repeat-y, repeat-y !important;
+}
+
+.welcome-bar {
+  white-space: pre-wrap;
+}
+
+.nano-container {
+  padding: 2em;
+  font-size: 1em;
+  font-weight: 300;
+  color: $welcome-highlight-color;
+
+  font-family: Consolas, Monaco, 'Andale Mono', monospace, "Lucida Console", monospace;
+}
+
+.nano-header {
+  display: flex;
+  background: $welcome-highlight-color;
+  margin-bottom: 1em;
+  color: $welcome-background-color;
+}
+
+.nano-version {
+  flex-grow: 0.25;
+  padding-left: 0.25em;
+}
+
+
+.nano-command {
+  display: flex;
+}
+
+.nano-command-container {
+  display: flex;
+  flex-grow: 1;
+}
+
+.nano-command-group {
+  flex-grow: 1;
+}
+
+.nano-commands {
+  display: flex;
+}
+
+.nano-commands div {
+  margin-bottom: 0;
+  position: relative;
+}
+
+.nano-command-hotkey {
+  background: $welcome-highlight-color;
+  color: $welcome-background-color;
+  margin-right: 0.5em;
+}
+
+.nano-command-label {
+  margin-right: 0.5em;
+}

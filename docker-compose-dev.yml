@@ -1,0 +1,26 @@
+version: "3"
+services:
+  web-content:
+    build:
+      dockerfile: Dockerfile-dev
+      context: ./web-content
+    image: alexsimons/mongo-images-web-content:1.0.0
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./web-content:/app
+  web-service:
+    build: ./web-service
+    image: alexsimons/webflux-web-service:1.0.0
+    depends_on:
+      - mongo
+    ports:
+      - "80:80"
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - "mongoData:/data/db"
+volumes:
+  mongoData:

@@ -1,0 +1,8 @@
+acari:
+  mongo:
+    connectionString: mongodb://mongo
+    landingDatabase: images
+
+server:
+  port: 80
+

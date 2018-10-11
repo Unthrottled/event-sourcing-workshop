@@ -1,0 +1,110 @@
+.pod-member-full-name {
+  font-family: proto, serif;
+  font-size: 2em;
+  text-align: center;
+  color: white;
+  text-shadow: -1px -1px 0 rgba(112, 49, 43, 0.75),
+  1px -1px 0 rgba(112, 49, 43, 0.75),
+  -1px 1px 0 rgba(112, 49, 43, 0.75),
+  1px 1px 0 rgba(112, 49, 43, 0.75);
+}
+
+.add-pod-member-label {
+  font-size: 2em;
+  padding-top: 1em;
+  color: whitesmoke;
+  text-shadow: -1px -1px 0 rgba(0,0,0, 0.75),
+  1px -1px 0 rgba(0,0,0, 0.75),
+  -1px 1px 0 rgba(0,0,0, 0.75),
+  1px 1px 0 rgba(0,0,0, 0.75);
+}
+
+
+.email {
+  color: white;
+  font-size: 1.25em;
+}
+
+.phone-number {
+  color: azure;
+  font-size: 1.25em;
+}
+
+.contact-info {
+  margin-top: 1em;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.interest-label {
+  text-align: center;
+  font-size: 1.25em;
+  color: cornsilk;
+}
+
+.interest-category {
+  text-align: right;
+  padding: {
+    top: 5px;
+    bottom: 5px;
+  }
+}
+
+.interest-tag {
+  position: relative;
+  margin: {
+    bottom: 5px;
+  }
+  display: inline-block;
+  height: 25px;
+  border-radius: 0 5px 5px 0;
+  padding: 0 2em 0 1em;
+  background: $tag-background;
+  color: $tag-color;
+  font-size: 1.25em;
+  line-height: 23px;
+  font-weight: 400;
+
+}
+
+.interest-tag:after {
+  position: absolute;
+  right: 0;
+  margin: 1px 7px;
+  font-weight: bold;
+  font-size: 19px;
+}
+
+.interest-tag:before {
+  position: absolute;
+  background: $tag-background;
+  content: "\6969";
+  color: $tag-background;
+  font-size: 12px;
+  line-height: 13px;
+  text-indent: 6px;
+  top: 3px;
+  left: -10px;
+  width: 18px;
+  height: 18px;
+  transform: rotate(45deg);
+  border-left: 1px solid $border-color;
+  border-bottom: 1px solid $border-color;
+}
+
+.interest-removal {
+  margin-left: 1em;
+  margin-top: 0.1em
+}
+
+.interest-removal:hover {
+  cursor: pointer;
+}
+
+.information-editor-container {
+  padding: 1.25em;
+}
+.information-editor-container > label {
+  margin-bottom: 1em;
+  display: inline-block;
+}

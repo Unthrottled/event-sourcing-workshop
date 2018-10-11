@@ -1,0 +1,9 @@
+<div class="input-group">
+    <input (keyup)="submitMaybe($event)" type="text" class="form-control" placeholder="enter interest"
+           [(ngModel)]="textValue"/>
+    <div class="input-group-btn">
+        <button class="btn btn-primary" type="button" (click)="onClick()">
+            <span class="glyphicon glyphicon-ok"></span>
+        </button>
+    </div>
+</div>

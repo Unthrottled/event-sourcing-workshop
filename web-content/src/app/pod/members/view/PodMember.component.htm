@@ -1,0 +1,25 @@
+<div class="pod-member-container">
+    <div>
+        <div *ngIf="avatar | async">
+                <avatar-view [avatar]="avatar | async"></avatar-view>
+        </div>
+        <div *ngIf="editMode">
+            <pod-member-editor [podMember]="podMember"></pod-member-editor>
+            <div class="image-button-container">
+                <div class="btn btn-lg btn-danger" (click)="delete()">Delete</div>
+                <div class="btn btn-lg btn-info" (click)="hideEdit()">Hide Editor</div>
+            </div>
+        </div>
+        <div  *ngIf="personalInformation | async">
+            <div *ngIf="!editMode">
+                <personal-information [personalInformation]="personalInformation | async"></personal-information>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!editMode" class="edit-button-container">
+        <div (click)="showEdit()">
+            <i class="far fa-edit"></i>
+        </div>
+    </div>
+</div>
+

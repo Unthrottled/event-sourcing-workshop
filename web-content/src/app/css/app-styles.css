@@ -1,0 +1,37 @@
+.boxed-content {
+    background: #afafaf;
+    z-index: 10000;
+    position: relative;
+    width: 99.984%;
+    border-radius: 5px;
+}
+
+pod-member-editor {
+    color: azure;
+}
+
+.app-container {
+    width: 95%;
+    box-sizing: content-box;
+    padding: 20px;
+}
+
+.slider-bro {
+    margin-top: 3rem;
+}
+
+.dead-mans-switch {
+
+}
+
+
+.view-container {
+    display: flex;
+}
+
+.content-container {
+    background: #e6e6e6;
+    color: #3e3e3e;
+    padding: 10px;
+    border-radius: 5px;
+}

@@ -1,0 +1,7 @@
+Create pods
+Add Pod Members
+Remove Pod Members
+Add Pod Member Image
+Remove Pod Member Image
+Add Interests
+Remove Interests.

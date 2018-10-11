@@ -1,0 +1,27 @@
+<div>
+    <div class="pod-member-full-name">
+        {{firstName }} {{lastName}}
+    </div>
+    <div class="contact-info">
+        <div class="email">
+            <label>
+                <i class="far fa-envelope"></i>
+                {{email}}
+            </label>
+        </div>
+        <div class="phone-number">
+            <label>
+                <i class="fas fa-comment-alt"></i>
+                {{phoneNumber}}
+            </label>
+        </div>
+    </div>
+    <div class="skill-container">
+        <div>
+            <div class="interest-label">
+                Interests
+            </div>
+            <text-list [interests]="interests"></text-list>
+        </div>
+    </div>
+</div>

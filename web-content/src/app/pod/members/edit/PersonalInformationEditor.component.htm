@@ -1,0 +1,26 @@
+<div class="information-editor-container">
+    <label>
+        <input [(ngModel)]="firstName" type="text" (blur)="fieldChanged({'value':firstName, 'field':'firstName'})"/>
+        First Name
+    </label>
+    <label>
+        <input [(ngModel)]="lastName" type="text" (blur)="fieldChanged({'value':lastName, 'field':'lastName'})"/>
+        Last Name
+    </label>
+    <label>
+        <input [(ngModel)]="email" type="text" (blur)="fieldChanged({'value':email, 'field':'email'})"/>
+        Email
+    </label>
+    <label>
+        <input [(ngModel)]="phoneNumber" type="text" (blur)="fieldChanged({'value':phoneNumber, 'field':'phoneNumber'})"/>
+        Phone Number
+    </label>
+    <text-submission (itemSubmitted)="addInterest($event)"></text-submission>
+    <ul class="interest-category">
+        <li *ngFor="let interest of interests" class="interest-tag">
+            <span> {{ interest.value }} </span>
+            <span class="far fa-times-circle interest-removal"
+                  (click)="removeInterest(interest)"></span>
+        </li>
+    </ul>
+</div>
