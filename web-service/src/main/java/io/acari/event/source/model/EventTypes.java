@@ -1,4 +1,6 @@
 package io.acari.event.source.model;
 
-public interface EventTypes {
+public interface EventTypes
+
+{
 }
