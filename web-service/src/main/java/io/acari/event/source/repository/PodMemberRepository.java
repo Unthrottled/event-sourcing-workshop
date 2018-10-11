@@ -19,16 +19,16 @@ import java.util.stream.Stream;
 
 @Service
 public class PodMemberRepository {
-    private final ReactiveMongoTemplate reactiveMongoTemplate;
+    private final ReactiveMongoTemplate reactiveMongoTemplateDefined;
     private final ObjectMapper objectMapper;
 
-    public PodMemberRepository(ReactiveMongoTemplate reactiveMongoTemplate, ObjectMapper objectMapper) {
-        this.reactiveMongoTemplate = reactiveMongoTemplate;
+    public PodMemberRepository(ReactiveMongoTemplate reactiveMongoTemplateDefined, ObjectMapper objectMapper) {
+        this.reactiveMongoTemplateDefined = reactiveMongoTemplateDefined;
         this.objectMapper = objectMapper;
     }
 
     public Stream<Event> fetchPodMemberEventStream(String podMemberIdentifier){
-        return reactiveMongoTemplate.find(Query.query(Criteria.where("id")
+        return reactiveMongoTemplateDefined.find(Query.query(Criteria.where("id")
                 .is(podMemberIdentifier)), Document.class, "podMemberEvents")
                 .map(document -> (List<Document>) document.get("events"))
                 .flatMap(documents ->
@@ -46,7 +46,7 @@ public class PodMemberRepository {
 
     public Optional<Event> saveEvent(String podMemberIdentifier, Event event){
         try {
-            return reactiveMongoTemplate.upsert(
+            return reactiveMongoTemplateDefined.upsert(
                     Query.query(Criteria.where("id").is(podMemberIdentifier)),
             new Update().push("events", Document.parse(objectMapper.writeValueAsString(event))),//probably should figure out how to do this better.
                     String.class, "podMemberEvents")
