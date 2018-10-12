@@ -1,4 +1,4 @@
-package io.acari.event.source.rest
+package io.acari.event.source.prebuilt.rest
 
 import io.acari.event.source.prebuilt.handler.ImageHandler
 import io.acari.event.source.prebuilt.handler.PreBuiltPodHandler

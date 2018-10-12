@@ -1,4 +1,4 @@
-package io.acari.event.source.rest
+package io.acari.event.source.prebuilt.rest
 
 import org.springframework.stereotype.Component
 import org.springframework.web.server.ServerWebExchange
