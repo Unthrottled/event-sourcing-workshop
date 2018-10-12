@@ -1,13 +1,13 @@
 package io.acari.event.source.prebuilt.rest
 
+import io.acari.event.source.models.Event
 import io.acari.event.source.prebuilt.handler.ImageHandler
 import io.acari.event.source.prebuilt.handler.PreBuiltPodHandler
-import io.acari.event.source.models.Event
 import org.springframework.context.annotation.Bean
 import org.springframework.core.io.ClassPathResource
 import org.springframework.http.MediaType
-import org.springframework.web.reactive.function.BodyExtractors
 import org.springframework.stereotype.Component
+import org.springframework.web.reactive.function.BodyExtractors
 import org.springframework.web.reactive.function.BodyInserters.fromPublisher
 import org.springframework.web.reactive.function.server.HandlerFunction
 import org.springframework.web.reactive.function.server.RequestPredicates.*

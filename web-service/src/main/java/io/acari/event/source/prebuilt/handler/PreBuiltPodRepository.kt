@@ -1,4 +1,4 @@
-package io.acari.event.source.repository
+package io.acari.event.source.prebuilt.handler
 
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
@@ -14,7 +14,7 @@ import reactor.core.publisher.Mono
  */
 
 @Service
-class PodRepository(private val reactiveMongoTemplateDefined: ReactiveMongoTemplate){
+class PreBuiltPodRepository(private val reactiveMongoTemplateDefined: ReactiveMongoTemplate){
 
     private val objectMapper = jacksonObjectMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)

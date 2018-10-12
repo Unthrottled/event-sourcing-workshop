@@ -1,8 +1,6 @@
 package io.acari.event.source.prebuilt.handler
 
 import io.acari.event.source.models.Event
-import io.acari.event.source.repository.PodMemberRepository
-import io.acari.event.source.repository.PodRepository
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Flux
 
@@ -11,13 +9,13 @@ import reactor.core.publisher.Flux
  */
 @Service
 class PreBuiltPodHandler(
-    private val podMemberRepository: PodMemberRepository,
-    private val podRepository: PodRepository
+    private val podMemberRepository: PreBuiltPodMemberRepository,
+    private val preBuiltPodRepository: PreBuiltPodRepository
 ){
 
   fun allPodMemberEvents(podMemberIdentifier: String): Flux<Event> =
       podMemberRepository.fetchPodMemberEventStream(podMemberIdentifier)
 
   fun allPodEvents(): Flux<Event> =
-      podRepository.allPodEvents()
+      preBuiltPodRepository.allPodEvents()
 }

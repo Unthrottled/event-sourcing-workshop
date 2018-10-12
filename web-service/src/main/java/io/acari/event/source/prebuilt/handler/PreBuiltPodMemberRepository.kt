@@ -1,4 +1,4 @@
-package io.acari.event.source.repository
+package io.acari.event.source.prebuilt.handler
 
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
