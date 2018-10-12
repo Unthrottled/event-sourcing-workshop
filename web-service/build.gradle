@@ -60,7 +60,6 @@ dependencies {
     compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     compile("org.jetbrains.kotlin:kotlin-reflect")
     compileOnly 'org.projectlombok:lombok:1.18.2'
-    apt 'org.projectlombok:lombok:1.18.2'
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile('io.projectreactor:reactor-test')
 }
