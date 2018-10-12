@@ -1,4 +1,4 @@
-package io.acari.event.source.handler
+package io.acari.event.source.prebuilt.handler
 
 import io.acari.event.source.models.Event
 import io.acari.event.source.repository.PodMemberRepository

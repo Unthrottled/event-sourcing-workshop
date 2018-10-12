@@ -1,4 +1,4 @@
-package io.acari.event.source.handler
+package io.acari.event.source.prebuilt.handler
 
 import com.mongodb.reactivestreams.client.gridfs.GridFSBucket
 import io.acari.event.source.flux.DownloadStreamToFluxFactory

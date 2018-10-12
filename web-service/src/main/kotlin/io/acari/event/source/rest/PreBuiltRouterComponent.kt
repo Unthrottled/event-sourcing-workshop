@@ -1,7 +1,7 @@
 package io.acari.event.source.rest
 
-import io.acari.event.source.handler.ImageHandler
-import io.acari.event.source.handler.PreBuiltPodHandler
+import io.acari.event.source.prebuilt.handler.ImageHandler
+import io.acari.event.source.prebuilt.handler.PreBuiltPodHandler
 import io.acari.event.source.models.Event
 import org.springframework.context.annotation.Bean
 import org.springframework.core.io.ClassPathResource
