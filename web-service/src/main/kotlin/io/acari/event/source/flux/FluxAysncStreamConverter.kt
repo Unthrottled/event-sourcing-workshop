@@ -1,4 +1,4 @@
-package io.acari.springwebflux.flux
+package io.acari.event.source.flux
 
 import com.mongodb.reactivestreams.client.gridfs.AsyncInputStream
 import org.springframework.core.io.buffer.DataBuffer

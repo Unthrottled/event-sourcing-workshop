@@ -1,6 +1,6 @@
-package io.acari.springwebflux.flux
+package io.acari.event.source.flux
 
-import io.acari.springwebflux.mono.MonoSinkHelper
+import io.acari.event.source.mono.MonoSinkHelper
 import reactor.core.Disposable
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono

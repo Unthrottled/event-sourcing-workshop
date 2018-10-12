@@ -1,4 +1,4 @@
-package io.acari.springwebflux.mono
+package io.acari.event.source.mono
 
 import reactor.core.publisher.MonoSink
 

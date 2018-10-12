@@ -1,8 +1,8 @@
-package io.acari.springwebflux.repository
+package io.acari.event.source.repository
 
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
-import io.acari.springwebflux.models.Event
+import io.acari.event.source.models.Event
 import org.bson.Document
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate
 import org.springframework.data.mongodb.core.query.Criteria

@@ -1,4 +1,4 @@
-package io.acari.springwebflux.configuration
+package io.acari.event.source.configuration
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory

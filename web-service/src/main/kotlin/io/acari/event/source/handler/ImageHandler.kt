@@ -1,9 +1,9 @@
-package io.acari.springwebflux.handler
+package io.acari.event.source.handler
 
 import com.mongodb.reactivestreams.client.gridfs.GridFSBucket
-import io.acari.springwebflux.flux.DownloadStreamToFluxFactory
-import io.acari.springwebflux.flux.FluxAsyncStreamConverter
-import io.acari.springwebflux.models.Identifier
+import io.acari.event.source.flux.DownloadStreamToFluxFactory
+import io.acari.event.source.flux.FluxAsyncStreamConverter
+import io.acari.event.source.models.Identifier
 import org.bson.types.ObjectId
 import org.springframework.http.codec.multipart.Part
 import org.springframework.stereotype.Component

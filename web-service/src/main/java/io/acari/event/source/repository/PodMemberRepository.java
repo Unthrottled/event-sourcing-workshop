@@ -2,7 +2,7 @@ package io.acari.event.source.repository;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.acari.springwebflux.models.Event;
+import io.acari.event.source.models.Event;
 import org.bson.Document;
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;

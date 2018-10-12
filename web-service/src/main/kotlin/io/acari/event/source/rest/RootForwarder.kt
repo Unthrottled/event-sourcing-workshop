@@ -1,4 +1,4 @@
-package io.acari.springwebflux.rest
+package io.acari.event.source.rest
 
 import org.springframework.stereotype.Component
 import org.springframework.web.server.ServerWebExchange

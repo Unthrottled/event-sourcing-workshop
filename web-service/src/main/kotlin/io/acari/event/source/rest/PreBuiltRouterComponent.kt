@@ -1,11 +1,11 @@
-package io.acari.springwebflux.rest
+package io.acari.event.source.rest
 
-import io.acari.springwebflux.handler.ImageHandler
-import io.acari.springwebflux.handler.PodHandler
-import io.acari.springwebflux.handler.PreBuiltPodHandler
-import io.acari.springwebflux.models.Event
-import io.acari.springwebflux.models.Identifier
-import io.acari.springwebflux.models.PersonalInformation
+import io.acari.event.source.handler.ImageHandler
+import io.acari.event.source.handler.PodHandler
+import io.acari.event.source.handler.PreBuiltPodHandler
+import io.acari.event.source.models.Event
+import io.acari.event.source.models.Identifier
+import io.acari.event.source.models.PersonalInformation
 import org.springframework.context.annotation.Bean
 import org.springframework.core.io.ClassPathResource
 import org.springframework.http.MediaType

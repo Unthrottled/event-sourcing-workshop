@@ -1,8 +1,8 @@
-package io.acari.springwebflux.flux
+package io.acari.event.source.flux
 
 import com.mongodb.reactivestreams.client.Success
 import com.mongodb.reactivestreams.client.gridfs.GridFSDownloadStream
-import io.acari.springwebflux.configuration.loggerFor
+import io.acari.event.source.configuration.loggerFor
 import reactor.core.publisher.Flux
 import reactor.core.publisher.FluxSink
 import reactor.core.publisher.Mono

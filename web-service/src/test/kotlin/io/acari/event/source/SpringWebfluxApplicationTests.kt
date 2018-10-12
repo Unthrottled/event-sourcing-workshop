@@ -1,4 +1,4 @@
-package io.acari.springwebflux
+package io.acari.event.source
 
 import org.junit.Test
 import org.junit.runner.RunWith

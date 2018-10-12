@@ -1,7 +1,7 @@
 package io.acari.event.source.rest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.acari.springwebflux.models.Event;
+import io.acari.event.source.models.Event;
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
