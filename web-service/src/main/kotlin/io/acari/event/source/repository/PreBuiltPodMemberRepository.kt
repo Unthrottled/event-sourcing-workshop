@@ -16,7 +16,7 @@ import reactor.core.publisher.Mono
  * Forged in the flames of battle by alex.
  */
 @Service
-class PodMemberRepository(private val reactiveMongoTemplateDefined: ReactiveMongoTemplate) {
+class PreBuiltPodMemberRepository(private val reactiveMongoTemplateDefined: ReactiveMongoTemplate) {
     private val objectMapper = jacksonObjectMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
 
