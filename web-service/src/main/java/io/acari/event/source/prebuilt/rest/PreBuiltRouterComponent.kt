@@ -33,7 +33,6 @@ class PreBuiltRouterComponent(private val imageHandler: ImageHandler,
               route(GET("/event"), podGetEventHandler())
                   .andNest(path("/member/{id}"),
                       route(POST("/avatar"), saveImageHandler())
-                          .andRoute(POST("/avatar"), saveImageHandler())
                           .andRoute(GET("/avatar"), fetchPodMemberAvatarHandler())
                           .andRoute(GET("/event"), podMemberGetEventHandler())
                   ))

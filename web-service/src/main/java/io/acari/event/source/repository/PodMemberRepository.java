@@ -1,4 +1,4 @@
-package io.acari.event.source.prebuilt.repository;
+package io.acari.event.source.repository;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
