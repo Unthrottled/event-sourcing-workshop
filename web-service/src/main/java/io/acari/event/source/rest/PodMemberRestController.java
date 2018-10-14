@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@RestController("/api/pod")
-public class PodRestController {
+@RestController("/api/pod/member")
+public class PodMemberRestController {
   private PodHandler podHandler;
 
 }
