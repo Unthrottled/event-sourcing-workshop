@@ -1,14 +1,28 @@
 package io.acari.event.source.rest;
 
 import io.acari.event.source.handler.PodHandler;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import org.springframework.web.bind.annotation.RestController;
+import io.acari.event.source.models.Identifier;
+import org.springframework.web.bind.annotation.*;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@RestController("/api/pod")
+import java.util.Optional;
+import java.util.stream.Stream;
+
+@RestController
+@RequestMapping("/api/pod")
 public class PodRestController {
   private PodHandler podHandler;
 
+  public PodRestController(PodHandler podHandler) {
+    this.podHandler = podHandler;
+  }
+
+  @GetMapping("/members")
+  public Stream<Identifier> getAllPodMembers() {
+    return podHandler.projectAllPodMembers();
+  }
+
+  @PostMapping("/event")
+  public Optional<String> savePodEvent(@RequestBody String event) {
+    return podHandler.savePodEvent(event);
+  }
 }
