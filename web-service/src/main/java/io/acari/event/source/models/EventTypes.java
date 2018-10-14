@@ -1,4 +1,4 @@
-package io.acari.event.source.model;
+package io.acari.event.source.models;
 
 public interface EventTypes {
     String POD_MEMBER_CREATED = "POD_MEMBER_CREATED";

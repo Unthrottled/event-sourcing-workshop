@@ -1,4 +1,4 @@
-package io.acari.event.source.model;
+package io.acari.event.source.models;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.MissingNode;
