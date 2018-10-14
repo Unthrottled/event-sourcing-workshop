@@ -1,4 +1,4 @@
-package io.acari.event.source.rest;
+package io.acari.event.source.repository;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.acari.event.source.models.Event;

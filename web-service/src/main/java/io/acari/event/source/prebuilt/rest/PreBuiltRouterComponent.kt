@@ -33,6 +33,8 @@ class PreBuiltRouterComponent(private val imageHandler: ImageHandler,
               route(GET("/event"), podGetEventHandler())
                   .andNest(path("/member/{id}"),
                       route(POST("/avatar"), saveImageHandler())
+                          .andRoute(POST("/avatar"), saveImageHandler())
+                          .andRoute(GET("/avatar"), fetchPodMemberAvatarHandler())
                           .andRoute(GET("/event"), podMemberGetEventHandler())
                   ))
       )
@@ -52,5 +54,10 @@ class PreBuiltRouterComponent(private val imageHandler: ImageHandler,
     ServerResponse.ok()
         .contentType(MediaType.APPLICATION_STREAM_JSON)
         .body(fromPublisher(preBuiltPodHandler.allPodEvents(), Event::class.java))
+  }
+
+  private fun fetchPodMemberAvatarHandler() = HandlerFunction {
+    ServerResponse.ok()
+        .body(imageHandler.fetchImage(it.pathVariable("id")), ByteArray::class.java)
   }
 }

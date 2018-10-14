@@ -6,7 +6,7 @@ import io.acari.event.source.models.Event;
 import io.acari.event.source.models.Identifier;
 import io.acari.event.source.models.PersonalInformation;
 import io.acari.event.source.prebuilt.repository.PodMemberRepository;
-import io.acari.event.source.rest.PodRepository;
+import io.acari.event.source.repository.PodRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
