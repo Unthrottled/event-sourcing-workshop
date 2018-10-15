@@ -33,7 +33,7 @@ public class PodHandler {
     }
 
     public Optional<Event> savePodMemberEvent(String podMemberIdentifier, Event eventToSave) {
-        return Optional.of(eventToSave);
+        return podMemberRepository.saveEvent(podMemberIdentifier, eventToSave);
     }
 
     /**
