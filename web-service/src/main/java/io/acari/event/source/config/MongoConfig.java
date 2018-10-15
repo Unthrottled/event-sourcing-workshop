@@ -56,7 +56,7 @@ public class MongoConfig extends AbstractReactiveMongoConfiguration {
 
     @Override
     protected String getDatabaseName() {
-        return environment.getProperty("acari.mongo.landingDatabase", "images");
+        return environment.getProperty("acari.mongo.landingDatabase", "events");
     }
 
     @Bean

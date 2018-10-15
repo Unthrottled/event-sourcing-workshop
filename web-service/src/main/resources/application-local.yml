@@ -2,7 +2,7 @@ acari:
   mongo:
     connectionString: mongodb://localhost:27017
     host: localhost:27017
-    landingDatabase: images
+    landingDatabase: events
 
 server:
   port: 8023

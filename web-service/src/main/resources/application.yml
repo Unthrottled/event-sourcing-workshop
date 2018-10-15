@@ -2,7 +2,7 @@ acari:
   mongo:
     connectionString: mongodb://mongo
     host: mongo
-    landingDatabase: images
+    landingDatabase: events
 
 server:
   port: 80
