@@ -1,3 +1,3 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-//# sourceMappingURL=PodMember.models.js.map
+//# sourceMappingURL=PodMember.model.js.map
