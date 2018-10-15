@@ -1,10 +1,9 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {Action} from '../pod/members/model/Action.model';
 import {PersonalInformation} from '../pod/members/model/PersonalInformation';
-import {Observer} from 'rxjs';
-declare var oboe: any;
+import {Observer} from "rxjs";
 
 @Injectable()
 export class BackendAPIService {
@@ -38,21 +37,14 @@ export class BackendAPIService {
     }
 
     fetchAllPodMemberIdentifiers(): Observable<string> {
-        return Observable.create((observer: Observer<String>) => {
-            oboe({
-                'url': './api/pod/members',
-                'method': 'GET',
-                'body': '',
-                'cached': false,
-                'withCredentials': true
-            }).done((jsonThingo: any) => {
-                observer.next(jsonThingo._id);
-            }).fail((error: any) => {
-                observer.error(error);
-            }).on('end',()=>{
+        return this.httpClient.get('./api/pod/members', {
+            responseType: 'json',
+        })
+            .map((response: any) => (response).map((podMemberIdentifier: any) => podMemberIdentifier._id))
+            .flatMap((ids: string[]) => Observable.create((observer: Observer<String>) => {
+                ids.forEach(_id => observer.next(_id));
                 observer.complete();
-            })
-        });
+            }));
     }
 
     fetchPersonalInformation(podMemberId: string): Observable<PersonalInformation> {
@@ -64,12 +56,12 @@ export class BackendAPIService {
     postPodMemberEvent<T>(action: Action<T>, podMemberIdentifier: string): Observable<Action<T>> {
         return this.httpClient.post('./api/pod/member/' + podMemberIdentifier + '/event', action, {
             responseType: 'json'
-        }).map((it: Action<T>)=>it);
+        }).map((it: Action<T>) => it);
     }
 
     postEvent<T>(action: Action<T>): Observable<Action<T>> {
         return this.httpClient.post('./api/pod/event', action, {
             responseType: 'json'
-        }).map((it: Action<T>)=>it);
+        }).map((it: Action<T>) => it);
     }
 }

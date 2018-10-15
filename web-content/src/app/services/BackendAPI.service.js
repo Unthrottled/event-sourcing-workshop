@@ -40,21 +40,14 @@ var BackendAPIService = /** @class */ (function () {
         };
     };
     BackendAPIService.prototype.fetchAllPodMemberIdentifiers = function () {
-        return Observable_1.Observable.create(function (observer) {
-            oboe({
-                'url': './api/pod/members',
-                'method': 'GET',
-                'body': '',
-                'cached': false,
-                'withCredentials': true
-            }).done(function (jsonThingo) {
-                observer.next(jsonThingo._id);
-            }).fail(function (error) {
-                observer.error(error);
-            }).on('end', function () {
-                observer.complete();
-            });
-        });
+        return this.httpClient.get('./api/pod/members', {
+            responseType: 'json',
+        })
+            .map(function (response) { return (response).map(function (podMemberIdentifier) { return podMemberIdentifier._id; }); })
+            .flatMap(function (ids) { return Observable_1.Observable.create(function (observer) {
+            ids.forEach(function (_id) { return observer.next(_id); });
+            observer.complete();
+        }); });
     };
     BackendAPIService.prototype.fetchPersonalInformation = function (podMemberId) {
         return this.httpClient.get('./api/pod/member/' + podMemberId + '/information', {
