@@ -37,7 +37,7 @@ public class MongoConfig extends AbstractReactiveMongoConfiguration {
     }
 
     @Bean
-    public MongoTemplate lameMongoDatabase(com.mongodb.MongoClient lameMongoClient){
+    public MongoTemplate lameMongoTemplate(com.mongodb.MongoClient lameMongoClient){
         return new MongoTemplate(lameMongoClient, getDatabaseName());
     }
 
