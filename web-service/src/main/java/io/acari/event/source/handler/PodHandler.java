@@ -44,7 +44,7 @@ public class PodHandler {
      * But this works!
      */
     public Optional<String> savePodEvent(String eventAsJson) {
-        return Optional.of(eventAsJson);
+        return podRepository.saveEvent(eventAsJson);
     }
 
 
