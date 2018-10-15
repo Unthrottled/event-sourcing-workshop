@@ -31,7 +31,7 @@ public class PodHandler {
                         (podMembers, podEvent) -> {
                             try {
                                 BasePodMemberPayload basePodMemberPayload = objectMapper.treeToValue(podEvent.getPayload(), BasePodMemberPayload.class);
-                                if (EventsKt.POD_MEMBER_DELETED.equals(podEvent.getType())) {
+                                if (EventTypes.POD_MEMBER_DELETED.equals(podEvent.getType())) {
                                     podMembers.remove(basePodMemberPayload.getIdentifier());
                                 } else {
                                     podMembers.add(basePodMemberPayload.getIdentifier());

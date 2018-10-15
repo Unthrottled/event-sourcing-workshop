@@ -40,15 +40,6 @@ class ImageHandler(private val gridFSBucket: GridFSBucket) {
                 .onErrorReturn(false)
     }
 
-    fun findAllNames(): Flux<Identifier> {
-        return Flux.from(gridFSBucket.find())
-                .map { it.getId() }
-                .map { it.asObjectId() }
-                .map { it.getValue() }
-                .map { it.toHexString() }
-                .map { Identifier(it) }
-
-    }
 
     private fun getId(imageId: String): ObjectId = ObjectId(imageId)
 
