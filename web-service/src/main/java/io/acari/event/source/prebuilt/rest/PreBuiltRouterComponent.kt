@@ -57,6 +57,6 @@ class PreBuiltRouterComponent(private val imageHandler: ImageHandler,
 
   private fun fetchPodMemberAvatarHandler() = HandlerFunction {
     ServerResponse.ok()
-        .body(imageHandler.fetchImage(it.pathVariable("id")), ByteArray::class.java)
+        .body(preBuiltPodHandler.fetchAvatar(it.pathVariable("id")), ByteArray::class.java)
   }
 }
