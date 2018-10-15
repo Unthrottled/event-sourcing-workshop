@@ -33,7 +33,7 @@ public class MongoConfig extends AbstractReactiveMongoConfiguration {
 
     @Bean
     public com.mongodb.MongoClient lameMongoClient() {
-        return new com.mongodb.MongoClient(environment.getProperty("acari.mongo.connectionString", "localhost:27017"));
+        return new com.mongodb.MongoClient(environment.getProperty("acari.mongo.host", "localhost:27017"));
     }
 
     @Bean
