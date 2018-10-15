@@ -2,7 +2,6 @@ package io.acari.event.source.config;
 
 import com.mongodb.ConnectionString;
 import com.mongodb.async.client.MongoClientSettings;
-import com.mongodb.client.MongoDatabase;
 import com.mongodb.connection.ClusterSettings;
 import com.mongodb.connection.netty.NettyStreamFactoryFactory;
 import com.mongodb.reactivestreams.client.MongoClient;
@@ -16,6 +15,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.data.mongodb.ReactiveMongoDatabaseFactory;
 import org.springframework.data.mongodb.config.AbstractReactiveMongoConfiguration;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 import org.springframework.data.mongodb.core.SimpleReactiveMongoDatabaseFactory;
 
@@ -36,8 +36,9 @@ public class MongoConfig extends AbstractReactiveMongoConfiguration {
         return new com.mongodb.MongoClient(environment.getProperty("acari.mongo.connectionString", "localhost:27017"));
     }
 
-    public MongoDatabase lameMongoDatabase(com.mongodb.MongoClient lameMongoClient){
-        return lameMongoClient.getDatabase(getDatabaseName());
+    @Bean
+    public MongoTemplate lameMongoDatabase(com.mongodb.MongoClient lameMongoClient){
+        return new MongoTemplate(lameMongoClient, getDatabaseName());
     }
 
     @Bean
