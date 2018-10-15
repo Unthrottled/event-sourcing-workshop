@@ -1,15 +1,16 @@
 package io.acari.event.source.handler;
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.acari.event.source.models.Event;
-import io.acari.event.source.models.Identifier;
-import io.acari.event.source.models.PersonalInformation;
+import io.acari.event.source.models.*;
 import io.acari.event.source.repository.PodMemberRepository;
 import io.acari.event.source.repository.PodRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Stream;
 
 @Service
@@ -25,7 +26,20 @@ public class PodHandler {
     }
 
     public Stream<Identifier> projectAllPodMembers() {
-        return Stream.empty();
+        return podRepository.allPodEvents()
+                .collect(HashSet<String>::new,
+                        (podMembers, podEvent) -> {
+                            try {
+                                BasePodMemberPayload basePodMemberPayload = objectMapper.treeToValue(podEvent.getPayload(), BasePodMemberPayload.class);
+                                if (EventsKt.POD_MEMBER_DELETED.equals(podEvent.getType())) {
+                                    podMembers.remove(basePodMemberPayload.getIdentifier());
+                                } else {
+                                    podMembers.add(basePodMemberPayload.getIdentifier());
+                                }
+                            } catch (JsonProcessingException e) {
+                                e.printStackTrace();
+                            }
+                        }, Set::addAll).stream().map(Identifier::new);
     }
 
     public Optional<PersonalInformation> projectPersonalInformation(String podMemberIdentifier) {
