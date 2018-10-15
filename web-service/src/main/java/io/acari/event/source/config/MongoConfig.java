@@ -2,6 +2,7 @@ package io.acari.event.source.config;
 
 import com.mongodb.ConnectionString;
 import com.mongodb.async.client.MongoClientSettings;
+import com.mongodb.client.MongoDatabase;
 import com.mongodb.connection.ClusterSettings;
 import com.mongodb.connection.netty.NettyStreamFactoryFactory;
 import com.mongodb.reactivestreams.client.MongoClient;
@@ -28,6 +29,15 @@ public class MongoConfig extends AbstractReactiveMongoConfiguration {
 
     public MongoConfig(Environment environment) {
         this.environment = environment;
+    }
+
+    @Bean
+    public com.mongodb.MongoClient lameMongoClient() {
+        return new com.mongodb.MongoClient(environment.getProperty("acari.mongo.connectionString", "localhost:27017"));
+    }
+
+    public MongoDatabase lameMongoDatabase(com.mongodb.MongoClient lameMongoClient){
+        return lameMongoClient.getDatabase(getDatabaseName());
     }
 
     @Bean
