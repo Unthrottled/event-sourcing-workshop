@@ -267,15 +267,16 @@ Those parts are the static content forwarding and Avatar Image Persistence/Retre
 
 #### 1. Create Minimal REST API
 
-In `PodRestController` we will need to put one of our rest controller!
+We will have 2 REST controllers.
 
-As a recap, here is the following outline of what the UI is expecting in regards as a REST API:
+In `PodRestController` we will need to put the following:
+
 - POST `/api/pod/event` 
     - Accepts a `String` and returns the accepted `Event` (which is a string) as a `Optional` eg: `Optional<String>`
 - GET `/api/pod/members`
     - Returns a empty `Stream<Identifier>` remember that the return type _must_ be `application/json`!
     
-In `PodMemberRestController` we will need to put the other rest controller!
+In `PodMemberRestController` we will need to put the following:
 
 - POST `/api/pod/member/{identifier}/event`
     - Accepts a `Event` and returns the accepted `Event` as a `Optional` eg: `Optional<Event>`
@@ -307,10 +308,10 @@ We'll start off easy and work our way up!
 
 Implement these service methods in `PodHandler`!
 
-1. public Stream<Identifier> projectAllPodMembers();
-1. public Optional<Event> savePodMemberEvent(String podMemberIdentifier, Event eventToSave);
-1. public Optional<String> savePodEvent(String eventAsJson);
-1. public Optional<PersonalInformation> projectPersonalInformation(String podMemberIdentifier);
+1. `public Stream<Identifier> projectAllPodMembers();`
+1. `public Optional<Event> savePodMemberEvent(String podMemberIdentifier, Event eventToSave);`
+1. `public Optional<String> savePodEvent(String eventAsJson);`
+1. `public Optional<PersonalInformation> projectPersonalInformation(String podMemberIdentifier);`
     1. Start off by projecting contact information
     1. Second project Interests
     1. Combine both projections
