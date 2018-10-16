@@ -72,11 +72,11 @@ public class PodHandler {
         });
 
     Set<Interest> interests = podMemberEvents.stream()
-        .collect(HashMap<String, Event>::new, (setOfIntersts, podMemberEvent) -> {
+        .collect(HashMap<String, Event>::new, (mapOfInterests, podMemberEvent) -> {
           if (EventTypes.INTEREST_CAPTURED.equals(podMemberEvent.getType())) {
-            setOfIntersts.put(podMemberEvent.getPayload().get("id").textValue(), podMemberEvent);
+            mapOfInterests.put(podMemberEvent.getPayload().get("id").textValue(), podMemberEvent);
           } else if (EventTypes.INTEREST_REMOVED.equals(podMemberEvent.getType())) {
-            setOfIntersts.remove(podMemberEvent.getPayload().get("id").textValue());
+            mapOfInterests.remove(podMemberEvent.getPayload().get("id").textValue());
           }
         }, Map::putAll).values()
         .stream()
