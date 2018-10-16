@@ -173,7 +173,7 @@ Pod Member Level
 On the topic of information retrieval, all pod member information is expected to be accessible 
 by `GET`ting it at `/api/pod/member/{identifier}/information`
 
-Where it returns just content type of `application/json` and NOT 'application/stream+json'
+Where it returns just content type of `application/json`.
 
 Expected return value is as follows:
 
