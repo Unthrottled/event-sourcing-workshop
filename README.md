@@ -260,25 +260,22 @@ Where the UI maintains the reference the `identifier`
 
 Remember when I said that the backend has not been built for data persistence?
 Well I lied, turns out that some of the REST API has been built out.
-Those parts are the static content forwarding and Avatar Image Persistence.
-
-However the `GET` method call on `/api/pod/member/{identifier}/avatar` has not been implemented yet!
-
-This endpoint takes the path variable and will get the current avatar from the database
-and stream the chunks of data to the client! 
-
+Those parts are the static content forwarding and Avatar Image Persistence/Retreival.
 
 ### Where the Workshop Work Begins!
 
 #### 1. Create Minimal REST API
 
-In `RouterComponent` we will need to put our rest controller!
+In `PodRestController` we will need to put one of our rest controller!
 
 As a recap, here is the following outline of what the UI is expecting in regards as a REST API:
 - POST `/api/pod/event` 
     - Accepts a `String` and returns the accepted `Event` (which is a string) as a `Optional` eg: `Optional<String>`
 - GET `/api/pod/members`
     - Returns a empty `Stream<Identifier>` remember that the return type _must_ be `application/json`!
+    
+In `PodMemberRestController` we will need to put the other rest controller!
+
 - POST `/api/pod/member/{identifier}/event`
     - Accepts a `Event` and returns the accepted `Event` as a `Optional` eg: `Optional<Event>`
     - Needs to also take advantage  of the _path variable_
@@ -307,7 +304,7 @@ Take the time to match the handler API to the corresponding REST API we created 
 Now comes the fun part!
 We'll start off easy and work our way up!
 
-Implement these service methods!
+Implement these service methods in `PodHandler`!
 
 1. public Stream<Identifier> projectAllPodMembers();
 1. public Optional<Event> savePodMemberEvent(String podMemberIdentifier, Event eventToSave);
@@ -324,10 +321,9 @@ Implement these service methods!
 ### Pod Level Event Stream
 
 ```javascript 1.8
-transfer-encoding: chunked
-Content-Type: application/stream+json
+Content-Type: application/json
 
-{
+[{
 	"type": "POD_MEMBER_CREATED",
 	"payload": {
 		"identifier": "d7c9d570-a7b8-11e8-a8e4-afa47f95a3a1"
@@ -358,14 +354,13 @@ Content-Type: application/stream+json
 	},
 	"error": false,
 	"meta": {}
-}
+}]
 ```
 
 ### Pod Member Level Event Stream
 
 ```javascript 1.8
-transfer-encoding: chunked
-Content-Type: application/stream+json
+Content-Type: application/json
 [{
 	"type": "PERSONAL_INFO_CAPTURED",
 	"payload": {
