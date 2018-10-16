@@ -1,15 +1,15 @@
 package io.acari.event.source.handler;
 
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.acari.event.source.models.*;
+import io.acari.event.source.models.Event;
+import io.acari.event.source.models.Identifier;
+import io.acari.event.source.models.PersonalInformation;
 import io.acari.event.source.repository.PodMemberRepository;
 import io.acari.event.source.repository.PodRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 @Service
@@ -25,78 +25,15 @@ public class PodHandler {
   }
 
   public Stream<Identifier> projectAllPodMembers() {
-    return podRepository.allPodEvents()
-        .collect(HashSet<String>::new,
-            (podMembers, podEvent) -> {
-              try {
-                BasePodMemberPayload basePodMemberPayload = objectMapper.treeToValue(podEvent.getPayload(), BasePodMemberPayload.class);
-                if (EventTypes.POD_MEMBER_DELETED.equals(podEvent.getType())) {
-                  podMembers.remove(basePodMemberPayload.getIdentifier());
-                } else {
-                  podMembers.add(basePodMemberPayload.getIdentifier());
-                }
-              } catch (JsonProcessingException e) {
-                e.printStackTrace();
-              }
-            }, Set::addAll).stream().map(Identifier::new);
+    return Stream.empty();
   }
 
   public Optional<PersonalInformation> projectPersonalInformation(String podMemberIdentifier) {
-    List<Event> podMemberEvents = podMemberRepository.fetchPodMemberEventStream(podMemberIdentifier).collect(Collectors.toList());
-    PersonalInformation projectedPersonalInformation = podMemberEvents.stream()
-        .filter(event -> EventTypes.PERSONAL_INFO_CAPTURED.equals(event.getType()))
-        .map(Event::getPayload)
-        .flatMap(payload -> {
-          try {
-            return Stream.of(objectMapper.treeToValue(payload, CapturedInfoPayload.class));
-          } catch (JsonProcessingException e) {
-            return Stream.empty();
-          }
-        })
-        .collect(PersonalInformation::new, (personalInformation, capturedInfoPayload) -> {
-          switch (capturedInfoPayload.getField()) {
-            case "email":
-              personalInformation.setEmail(capturedInfoPayload.getValue());
-              break;
-            case "firstName":
-              personalInformation.setFirstName(capturedInfoPayload.getValue());
-              break;
-            case "lastName":
-              personalInformation.setLastName(capturedInfoPayload.getValue());
-              break;
-            case "phoneNumber":
-              personalInformation.setPhoneNumber(capturedInfoPayload.getValue());
-              break;
-          }
-        }, (personalInformation, personalInformation2) -> {
-        });
-
-    Set<Interest> interests = podMemberEvents.stream()
-        .collect(HashMap<String, Event>::new, (mapOfInterests, podMemberEvent) -> {
-          if (EventTypes.INTEREST_CAPTURED.equals(podMemberEvent.getType())) {
-            mapOfInterests.put(podMemberEvent.getPayload().get("id").textValue(), podMemberEvent);
-          } else if (EventTypes.INTEREST_REMOVED.equals(podMemberEvent.getType())) {
-            mapOfInterests.remove(podMemberEvent.getPayload().get("id").textValue());
-          }
-        }, Map::putAll).values()
-        .stream()
-        .flatMap(interestEvent -> {
-          try {
-            return Stream.of(objectMapper.treeToValue(interestEvent.getPayload(), Interest.class));
-          } catch (JsonProcessingException e) {
-            e.printStackTrace();
-            return Stream.empty();
-          }
-        }).collect(Collectors.toSet());
-
-    projectedPersonalInformation.setInterests(interests);
-
-
-    return Optional.of(projectedPersonalInformation);
+    return Optional.empty();
   }
 
   public Optional<Event> savePodMemberEvent(String podMemberIdentifier, Event eventToSave) {
-    return podMemberRepository.saveEvent(podMemberIdentifier, eventToSave);
+    return Optional.of(eventToSave);
   }
 
   /**
@@ -107,7 +44,7 @@ public class PodHandler {
    * But this works!
    */
   public Optional<String> savePodEvent(String eventAsJson) {
-    return podRepository.saveEvent(eventAsJson);
+    return Optional.of(eventAsJson);
   }
 
 
