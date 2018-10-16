@@ -79,7 +79,6 @@ The frontend was built out to satisfy the functional portions of the requirement
 All data that is added to the application is done through by using events in the form of a **Flux Standard Action** or **FSA**  for short
 Which will be stored in as an event stream at the level of **Pod Supreme** and at the level of the **Pod Member**
 
-#### Note: All events are put in sequentially, ie A _DELETED_ event will not come before a _ADDED_
 
 A FSA maintains this type declaration. 
 
@@ -139,6 +138,8 @@ With a request body that looks like this:
   "meta": {}
 }
 ```
+
+### Note: All events are put in sequentially, ie A _DELETED_ event will not come before a _ADDED_
 
 #### List Pod Members
 
