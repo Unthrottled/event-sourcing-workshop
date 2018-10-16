@@ -210,7 +210,7 @@ The FSA is expected to look something like this:
   }
 ```
 
-Where the field can be `firstName`, `lastName`, `email`, and `phoneNumber`.
+Where the field can be `firstName`, `lastName`, `email`, or `phoneNumber`.
 
 #### Pod Member Interests
 
