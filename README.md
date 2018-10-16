@@ -147,22 +147,21 @@ Event streams are great and all, but that abstraction should not really matter t
 With that in mind, when the application first loads in the browser, the UI will first attempt to get a list of all of the pod members that currently are active in **Pod Supreme**
 
 It will `GET` this information at `/api/pod/members`.
-It is ONLY going to accept a chunked `JSON Stream`:
+It is ONLY going to accept a JSON array:
 
 ```javascript 1.8
-transfer-encoding: chunked
-Content-Type: application/stream+json
+Content-Type: application/json
 ```
 
 With a payload that looks like this:
 
 ```javascript 1.8
-{
+[{
 	"_id": "dffc6470-a712-11e8-b3de-89c3131879b4"
-}
+},
 {
 	"_id": "bc1d6900-9fd3-11e8-b28d-df00e344ef92"
-}
+}]
 ```
 
 Pod Member Level
@@ -277,35 +276,28 @@ In `RouterComponent` we will need to put our rest controller!
 
 As a recap, here is the following outline of what the UI is expecting in regards as a REST API:
 - POST `/api/pod/event` 
-    - Accepts a `Mono<String>` and returns the accepted `Event` (which is a string) as a `Mono` eg: `Mono<String>`
+    - Accepts a `String` and returns the accepted `Event` (which is a string) as a `Optional` eg: `Optional<String>`
 - GET `/api/pod/members`
-    - Returns a empty `Flux<Identifier>` remember that the return type _must_ be `application/stream+json`!
+    - Returns a empty `Stream<Identifier>` remember that the return type _must_ be `application/json`!
 - POST `/api/pod/member/{identifier}/event`
-    - Accepts a `Mono<Event>` and returns the accepted `Event` as a `Mono` eg: `Mono<Event>`
+    - Accepts a `Event` and returns the accepted `Event` as a `Optional` eg: `Optional<Event>`
     - Needs to also take advantage  of the _path variable_
-- GET ``/api/pod/member/{identifier}/information``
-    - Accepts the _path variable_ and returns an empty `Mono<PersonalInformation>
-- GET ``/api/pod/member/{identifier}/avatar``
-    - Accepts the _path variable_ and returns an empty `Flux<ByteBuffer>`
+- GET `/api/pod/member/{identifier}/information`
+    - Accepts the _path variable_ and returns an empty `Optional<PersonalInformation>
     
 We well need to fulfill the following before we can move onto the next part.
     
 #### 2. Wire in Services into the REST API
 
-It is really convenient that the `PodHandler` and `ImageHandler` classes have a handy API!
+It is really convenient that the `PodHandler` class has a handy API!
 Which looks a little something like this:
 
-```kotlin
+```java
 //Pod Handler
-fun savePodMemberEvent(podMemberIdentifier: String, requestBody: Mono<Event>): Publisher<Event>
-fun savePodEvent(requestBody: Mono<String>): Publisher<String>
-fun projectAllPodMembers(): Flux<Identifier>
-fun projectPersonalInformation(podMemberIdentifier: String): Mono<PersonalInformation>
-```
-
-```kotlin
-//Image Handler
-fun fetchImage(imageId: String): Flux<ByteArray>
+public Stream<Identifier> projectAllPodMembers();
+public Optional<Event> savePodMemberEvent(String podMemberIdentifier, Event eventToSave);
+public Optional<String> savePodEvent(String eventAsJson);
+public Optional<PersonalInformation> projectPersonalInformation(String podMemberIdentifier);
 ```
 
 Take the time to match the handler API to the corresponding REST API we created above!
@@ -317,11 +309,10 @@ We'll start off easy and work our way up!
 
 Implement these service methods!
 
-1. savePodMemberEvent(podMemberIdentifier: String, requestBody: Mono<Event>): Publisher<Event>
-1. savePodEvent(requestBody: Mono<String>): Publisher<String>
-1. projectAllPodMembers(): Flux<Identifier>
-1. fetchImage(imageId: String): Flux<ByteArray>
-1. projectPersonalInformation(podMemberIdentifier: String): Mono<PersonalInformation>
+1. public Stream<Identifier> projectAllPodMembers();
+1. public Optional<Event> savePodMemberEvent(String podMemberIdentifier, Event eventToSave);
+1. public Optional<String> savePodEvent(String eventAsJson);
+1. public Optional<PersonalInformation> projectPersonalInformation(String podMemberIdentifier);
     1. Start off by projecting contact information
     1. Second project Interests
     1. Combine both projections
@@ -343,7 +334,7 @@ Content-Type: application/stream+json
 	},
 	"error": false,
 	"meta": {}
-}
+},
 {
 	"type": "POD_MEMBER_CREATED",
 	"payload": {
@@ -351,7 +342,7 @@ Content-Type: application/stream+json
 	},
 	"error": false,
 	"meta": {}
-}
+},
 {
 	"type": "POD_MEMBER_CREATED",
 	"payload": {
@@ -359,7 +350,7 @@ Content-Type: application/stream+json
 	},
 	"error": false,
 	"meta": {}
-}
+},
 {
 	"type": "POD_MEMBER_DELETED",
 	"payload": {
@@ -375,7 +366,7 @@ Content-Type: application/stream+json
 ```javascript 1.8
 transfer-encoding: chunked
 Content-Type: application/stream+json
-{
+[{
 	"type": "PERSONAL_INFO_CAPTURED",
 	"payload": {
 		"value": "Party",
@@ -383,7 +374,7 @@ Content-Type: application/stream+json
 	},
 	"error": false,
 	"meta": {}
-}
+},
 {
 	"type": "PERSONAL_INFO_CAPTURED",
 	"payload": {
@@ -392,7 +383,7 @@ Content-Type: application/stream+json
 	},
 	"error": false,
 	"meta": {}
-}
+},
 {
 	"type": "PERSONAL_INFO_CAPTURED",
 	"payload": {
@@ -401,7 +392,7 @@ Content-Type: application/stream+json
 	},
 	"error": false,
 	"meta": {}
-}
+},
 {
 	"type": "PERSONAL_INFO_CAPTURED",
 	"payload": {
@@ -410,7 +401,7 @@ Content-Type: application/stream+json
 	},
 	"error": false,
 	"meta": {}
-}
+},
 {
 	"type": "INTEREST_CAPTURED",
 	"payload": {
@@ -419,7 +410,7 @@ Content-Type: application/stream+json
 	},
 	"error": false,
 	"meta": {}
-}
+},
 {
 	"type": "INTEREST_CAPTURED",
 	"payload": {
@@ -428,7 +419,7 @@ Content-Type: application/stream+json
 	},
 	"error": false,
 	"meta": {}
-}
+},
 {
 	"type": "INTEREST_CAPTURED",
 	"payload": {
@@ -437,7 +428,7 @@ Content-Type: application/stream+json
 	},
 	"error": false,
 	"meta": {}
-}
+},
 {
 	"type": "INTEREST_CAPTURED",
 	"payload": {
@@ -446,7 +437,7 @@ Content-Type: application/stream+json
 	},
 	"error": false,
 	"meta": {}
-}
+},
 {
 	"type": "INTEREST_REMOVED",
 	"payload": {
@@ -455,7 +446,7 @@ Content-Type: application/stream+json
 	},
 	"error": false,
 	"meta": {}
-}
+},
 {
 	"type": "PERSONAL_INFO_CAPTURED",
 	"payload": {
@@ -464,7 +455,7 @@ Content-Type: application/stream+json
 	},
 	"error": false,
 	"meta": {}
-}
+},
 {
 	"type": "PERSONAL_INFO_CAPTURED",
 	"payload": {
@@ -473,7 +464,7 @@ Content-Type: application/stream+json
 	},
 	"error": false,
 	"meta": {}
-}
+},
 {
 	"type": "AVATAR_UPLOADED",
 	"payload": {
@@ -481,5 +472,5 @@ Content-Type: application/stream+json
 	},
 	"error": false,
 	"meta": {}
-}
+}]
 ```
