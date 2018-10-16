@@ -97,7 +97,7 @@ stream for each pod member created.
 
 However, only the frontend has been built, all data persistence and projections have not been built yet.
 
-Thankfully, they built all of it out it to a REST Contract!  
+Thankfully, they built all of it out to a REST Contract!  
 
 ### REST Contract details
 
@@ -148,7 +148,7 @@ Event streams are great and all, but that abstraction should not really matter t
 With that in mind, when the application first loads in the browser, the UI will first attempt to get a list of all of the pod members that currently are active in **Pod Supreme**
 
 It will `GET` this information at `/api/pod/members`.
-It is ONLY going to accept a JSON array:
+It is ONLY going to respond with a JSON array:
 
 ```javascript 1.8
 Content-Type: application/json
