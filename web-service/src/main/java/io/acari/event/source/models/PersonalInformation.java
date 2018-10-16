@@ -5,13 +5,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class PersonalInformation implements Contactable {
-    private List<Interest> interests = new ArrayList<>();
+    private Collection<Interest> interests = new HashSet<>();
     private String email;
     private String firstName;
     private String lastName;
