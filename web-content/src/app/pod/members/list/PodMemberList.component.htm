@@ -1,5 +1,8 @@
 <div class="list-container">
-    <div *ngFor="let podMember of podMembers">
-        <pod-member [podMember]="podMember"></pod-member>
-    </div>
+    <mat-grid-list cols="2" gutterSize="1em" rowHeight="10:9">
+        <mat-grid-tile *ngFor="let podMember of podMembers">
+            <pod-member [podMember]="podMember"></pod-member>
+        </mat-grid-tile>
+    </mat-grid-list>
+
 </div>
