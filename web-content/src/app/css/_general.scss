@@ -15,16 +15,17 @@ img {
   vertical-align: middle;
 }
 
-body {
+html, body {
   font-family: Tahoma, Geneva, sans-serif;
   font-size: 16px;
   line-height: 1.5;
   font-weight: 300;
-  background: url('../images/stripe.png') fixed, linear-gradient(#ba5e57,#364a5f);
+  background: url('../images/stripe.png') fixed, linear-gradient(#ba5e57, #ba5e57, #364a5f);
   -webkit-text-size-adjust: 100%;
   overflow-x: hidden;
   display: block;
   max-width: 1500px;
+  height: 100%;
   margin: auto;
   padding: 40px 50px;
 }
@@ -55,7 +56,7 @@ body {
 }
 
 .pod-member-container {
-  background: url(../images/hex.png), url(../images/hex-right.png), #425668 !important;;
+  background: url(../images/hex.png), url(../images/hex-right.png), linear-gradient(#425668, #425668, #364a5f) !important;;
   background-position: top left, top right !important;
   background-repeat: repeat-y, repeat-y !important;
   margin: 1em;
