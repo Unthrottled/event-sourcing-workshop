@@ -5976,7 +5976,8 @@ a.text-dark:focus, a.text-dark:hover {
   border-radius: 1em;
   z-index: 10000;
   position: relative;
-  width: 99.984%; }
+  max-width: 1100px;
+  margin: auto; }
 
 pod-member-component {
   border-radius: 1em; }
@@ -5985,18 +5986,16 @@ img {
   max-width: 100%;
   vertical-align: middle; }
 
-body {
+html, body {
   font-family: Tahoma, Geneva, sans-serif;
   font-size: 16px;
   line-height: 1.5;
   font-weight: 300;
-  background: url(stripe.ea57599555451c53af1db0db4f5b2664.png) fixed, linear-gradient(#ba5e57, #364a5f);
+  background: url(stripe.4c4a6bd81a053856dfb54b0be6ea8a9d.png) fixed, linear-gradient(#ba5e57, #ba5e57, #364a5f);
   -webkit-text-size-adjust: 100%;
   overflow-x: hidden;
-  display: block;
-  max-width: 1500px;
-  margin: auto;
-  padding: 40px 50px; }
+  height: 100%;
+  display: block; }
 
 .project-file-component-container {
   padding: 1em;
@@ -6006,11 +6005,16 @@ body {
   padding: 0.5em;
   background-color: rgba(202, 255, 248, 0);
   border-radius: 1em;
-  overflow: auto; }
+  overflow: hidden; }
 
 .list-container > div {
   display: inline-block;
   width: 525px; }
+
+.pod-member {
+  width: 100%;
+  height: 100%;
+  max-height: inherit; }
 
 .project-container {
   padding: 1em;
@@ -6020,7 +6024,7 @@ body {
   border: 0.25em double rgba(20, 20, 20, 0.33); }
 
 .pod-member-container {
-  background: url(hex.1817cd71704e66700b13afee97c9f0c7.png), url(hex-right.dc8782692258eb72285cd52fe171f70c.png), #425668 !important;
+  background: url(hex.db0a0d3645906aace98e4282b70d5777.png), url(hex-right.bec33891add705b2f7513a5eb9f6655e.png), linear-gradient(#425668, #425668, #364a5f) !important;
   background-position: top left, top right !important;
   background-repeat: repeat-y, repeat-y !important;
   margin: 1em;
@@ -6054,6 +6058,9 @@ body {
   float: right; }
 
 .add-club-member {
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
   font-size: 2em; }
 
 .add-club-member:hover {
