@@ -32,7 +32,6 @@ var PodMemberEditor_component_1 = require("./edit/PodMemberEditor.component");
 var EventDispatch_service_1 = require("./service/EventDispatch.service");
 var RemotePersonalInformation_service_1 = require("./service/RemotePersonalInformation.service");
 var loading_indicator_component_1 = require("../../loading/loading.indicator.component");
-var material_1 = require("@angular/material");
 var MembersModule = /** @class */ (function () {
     function MembersModule() {
     }
@@ -43,7 +42,6 @@ var MembersModule = /** @class */ (function () {
                 forms_1.FormsModule,
                 http_1.HttpClientModule,
                 animations_1.BrowserAnimationsModule,
-                material_1.MatGridListModule,
             ],
             exports: [
                 AvatarChoose_component_1.AvatarChooseComponent,

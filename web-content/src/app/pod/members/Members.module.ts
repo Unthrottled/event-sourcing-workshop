@@ -24,7 +24,6 @@ import {PodMemberEditorComponent} from './edit/PodMemberEditor.component';
 import {EventDispatchService} from './service/EventDispatch.service';
 import {RemotePersonalInformationService} from './service/RemotePersonalInformation.service';
 import {LoadingIndicatorComponent} from '../../loading/loading.indicator.component';
-import {MatGridListModule} from "@angular/material";
 
 @NgModule({
         imports: [
@@ -32,7 +31,7 @@ import {MatGridListModule} from "@angular/material";
             FormsModule,
             HttpClientModule,
             BrowserAnimationsModule,
-            MatGridListModule,
+
         ],
         exports: [
             AvatarChooseComponent,
