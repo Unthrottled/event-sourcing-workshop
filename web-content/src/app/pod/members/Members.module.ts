@@ -24,6 +24,7 @@ import {PodMemberEditorComponent} from './edit/PodMemberEditor.component';
 import {EventDispatchService} from './service/EventDispatch.service';
 import {RemotePersonalInformationService} from './service/RemotePersonalInformation.service';
 import {LoadingIndicatorComponent} from '../../loading/loading.indicator.component';
+import {MatButtonModule, MatIconModule} from "@angular/material";
 
 @NgModule({
         imports: [
@@ -31,6 +32,8 @@ import {LoadingIndicatorComponent} from '../../loading/loading.indicator.compone
             FormsModule,
             HttpClientModule,
             BrowserAnimationsModule,
+            MatButtonModule,
+            MatIconModule
 
         ],
         exports: [
