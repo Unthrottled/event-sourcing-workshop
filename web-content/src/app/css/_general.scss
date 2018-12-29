@@ -3,7 +3,8 @@
   border-radius: 1em;
   z-index: 10000;
   position: relative;
-  width: 99.984%;
+  max-width: 1100px;
+  margin: auto;
 }
 
 pod-member-component {
@@ -23,10 +24,8 @@ html, body {
   background: url('../images/stripe.png') fixed, linear-gradient(#ba5e57, #ba5e57, #364a5f);
   -webkit-text-size-adjust: 100%;
   overflow-x: hidden;
-  display: block;
-  max-width: 1500px;
   height: 100%;
-  margin: auto;
+  display: block;
 }
 
 .project-file-component-container {
@@ -38,7 +37,7 @@ html, body {
   padding: 0.5em;
   background-color: rgba(202, 255, 248, 0);
   border-radius: 1em;
-  overflow: auto;
+  overflow: hidden;
 }
 
 .list-container > div {
